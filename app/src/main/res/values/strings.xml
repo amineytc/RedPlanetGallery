@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">RedPlanetGallery</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="add_item">Add Item</string>
+    <string name="favorite">Favorite</string>
+    <string name="profile">Profile</string>
+
+    <string name="mars">MARS</string>
+    <string name="km">225.000.000 km</string>
 </resources>
