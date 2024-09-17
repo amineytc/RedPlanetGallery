@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:backgroundTint="@color/pink_grey"
     tools:context=".ui.splash.SplashFragment">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="321dp"
-        android:layout_height="345dp"
-        android:src="@drawable/solar_system"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_260sdp"
+        android:src="@drawable/splash_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,27 +20,49 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_64sdp"
         android:fontFamily="@font/lusitana_regular"
         android:text="@string/mars"
-        android:textColor="@color/purple"
-        android:textSize="@dimen/_56ssp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_36ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:fontFamily="@font/lusitana_regular"
+        android:text="@string/red_planet"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/_24ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:src="@drawable/ic_mars"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_36sdp"
-        android:fontFamily="@font/lusitana_regular"
         android:text="@string/km"
         android:textColor="@color/purple"
         android:textSize="@dimen/_28ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

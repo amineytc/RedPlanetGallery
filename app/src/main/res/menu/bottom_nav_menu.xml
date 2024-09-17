@@ -5,30 +5,30 @@
         android:id="@+id/homeFragment2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="@string/home"
-        android:icon="@drawable/home"/>
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
     <item
         android:id="@+id/searchFragment2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="@string/search"
-        android:icon="@drawable/search"/>
+        android:icon="@drawable/ic_search"
+        android:title="@string/search" />
     <item
         android:id="@+id/plusFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="@string/add_item"
-        android:icon="@drawable/plus"/>
+        android:icon="@drawable/ic_plus"
+        android:title="@string/add_item" />
     <item
         android:id="@+id/favoriteFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="@string/favorite"
-        android:icon="@drawable/favorite"/>
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/favorite" />
     <item
         android:id="@+id/profileFragment2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="@string/profile"
-        android:icon="@drawable/profile"/>
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile" />
 </menu>
