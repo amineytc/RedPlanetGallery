@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.splashFragment -> {
                     binding.bottomNavView.gone()
                 }
+
                 else -> {
                     binding.bottomNavView.visible()
                 }

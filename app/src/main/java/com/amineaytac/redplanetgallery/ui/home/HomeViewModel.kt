@@ -9,16 +9,15 @@ import com.amineaytac.redplanetgallery.core.network.dto.Photo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-
     private val marsRepository: MarsRepository
 ) : ViewModel() {
 
     val getMarsItems: MutableLiveData<Resource<List<Photo>>> = MutableLiveData()
-    init {
-        getMarsItems()
-    }
+
+    init { getMarsItems() }
 
     private fun getMarsItems() {
         viewModelScope.launch {
