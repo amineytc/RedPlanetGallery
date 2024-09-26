@@ -18,11 +18,12 @@
 
     <ImageView
         android:id="@+id/favoriteImageView"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_gravity="end"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/favorite_icon_desc"
         android:src="@drawable/ic_empty_favorite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,10 +36,10 @@
         android:layout_marginBottom="@dimen/_8sdp"
         android:fontFamily="@font/lusitana_regular"
         android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
         app:layout_constraintBottom_toTopOf="@+id/dialogText2"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="@string/mars"
-        android:textSize="@dimen/_12ssp"/>
+        tools:text="@string/mars" />
 
     <TextView
         android:id="@+id/dialogText2"
@@ -48,8 +49,8 @@
         android:layout_marginBottom="@dimen/_8sdp"
         android:fontFamily="@font/lusitana_regular"
         android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/dialogImage"
-        tools:text="@string/mars"
-        android:textSize="@dimen/_12ssp"/>
+        tools:text="@string/mars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

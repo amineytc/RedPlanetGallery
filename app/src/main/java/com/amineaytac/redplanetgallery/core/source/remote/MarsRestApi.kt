@@ -1,4 +1,4 @@
-package com.amineaytac.redplanetgallery.core.network.rest
+package com.amineaytac.redplanetgallery.core.source.remote
 
 import com.amineaytac.redplanetgallery.core.network.dto.MarsResponse
 import com.amineaytac.redplanetgallery.util.Constants

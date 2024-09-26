@@ -5,15 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.amineaytac.redplanetgallery.R
 import com.amineaytac.redplanetgallery.core.common.Resource
+import com.amineaytac.redplanetgallery.core.data.model.FavoriteModel
 import com.amineaytac.redplanetgallery.core.network.dto.Photo
 import com.amineaytac.redplanetgallery.databinding.FragmentHomeBinding
+import com.amineaytac.redplanetgallery.databinding.ItemDialogBinding
+import com.amineaytac.redplanetgallery.ui.favorite.FavoriteViewModel
 import com.amineaytac.redplanetgallery.util.gone
 import com.amineaytac.redplanetgallery.util.visible
 import com.bumptech.glide.Glide
@@ -24,7 +25,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val homeAdapter = HomeAdapter { item -> showItemDialog(item) }
-    private val homeVM: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,12 +39,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeVM.getMarsItems
+        homeViewModel.getMarsItems
         getMarsItems()
 
         binding.floatingButton.setOnClickListener {
-            binding.homeRcyc.scrollToPosition(0)
-        }
+            binding.homeRcyc.scrollToPosition(0) }
     }
 
     private fun setHomeMarsRecyc(marsList: List<Photo>) {
@@ -56,26 +57,40 @@ class HomeFragment : Fragment() {
 
     private fun showItemDialog(item: Photo) {
 
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.item_dialog, null)
-        val dialogBuilder = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
+        val dialogBinding = ItemDialogBinding.inflate(LayoutInflater.from(requireContext()))
+        val dialogBuilder = AlertDialog.Builder(requireContext()).setView(dialogBinding.root)
 
-        val dialogImage = dialogView.findViewById<ImageView>(R.id.dialogImage)
-        val dialogText = dialogView.findViewById<TextView>(R.id.dialogText)
-        val dialogText2 = dialogView.findViewById<TextView>(R.id.dialogText2)
+        homeViewModel.isItemFavorited(item.id.toString())
+            .observe(viewLifecycleOwner) { isFavorited ->
+                if (isFavorited) {
+                    dialogBinding.favoriteImageView.setImageResource(R.drawable.ic_fill_favorite)
+                } else {
+                    dialogBinding.favoriteImageView.setImageResource(R.drawable.ic_empty_favorite)
+                }
+            }
 
         Glide.with(requireContext())
             .load(item.imgSrc)
-            .into(dialogImage)
+            .into(dialogBinding.dialogImage)
 
-        dialogText.text = item.camera?.name
-        dialogText2.text = item.camera?.fullName
+        dialogBinding.dialogText.text = item.camera?.name
+        dialogBinding.dialogText2.text = item.camera?.fullName
 
+        dialogBinding.favoriteImageView.setOnClickListener {
+
+            val favoriteItem = FavoriteModel(
+                id = item.id,
+                name = item.camera?.name.orEmpty(),
+                fullName = item.camera?.fullName.orEmpty(),
+                imgSrc = item.imgSrc
+            )
+            favoriteViewModel.addItemFavorite(favoriteItem)
+        }
         dialogBuilder.create().show()
     }
 
     private fun getMarsItems() {
-        homeVM.getMarsItems.observe(viewLifecycleOwner) {
+        homeViewModel.getMarsItems.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
                     binding.progressBar.visible()

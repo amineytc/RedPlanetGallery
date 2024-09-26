@@ -1,5 +1,6 @@
 package com.amineaytac.redplanetgallery.ui.home
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,10 +23,13 @@ class HomeViewModel @Inject constructor(
     private fun getMarsItems() {
         viewModelScope.launch {
             getMarsItems.postValue(
-                handleResponse(marsRepository.getAllMarsPictures())
-                        as Resource<List<Photo>>?
+                handleResponse(marsRepository.getAllMarsPictures()) as Resource<List<Photo>>?
             )
         }
+    }
+
+    fun isItemFavorited(itemId: String): LiveData<Boolean> {
+        return marsRepository.isItemFavorited(itemId)
     }
 
     private fun handleResponse(response: Resource<List<Photo>?>): Resource<out List<Photo>?> {

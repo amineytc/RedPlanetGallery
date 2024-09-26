@@ -14,4 +14,5 @@
     <string name="red_planet">THE RED PLANET</string>
     <string name="recyc_up">Recycler View Up</string>
     <string name="image_desc">Image Description</string>
+    <string name="favorite_icon_desc">Favorite Icon Description</string>
 </resources>
