@@ -18,7 +18,9 @@ class HomeViewModel @Inject constructor(
 
     val getMarsItems: MutableLiveData<Resource<List<Photo>>> = MutableLiveData()
 
-    init { getMarsItems() }
+    init {
+        getMarsItems()
+    }
 
     private fun getMarsItems() {
         viewModelScope.launch {
@@ -36,7 +38,7 @@ class HomeViewModel @Inject constructor(
         return when (response) {
             is Resource.Success -> Resource.Success(response.data.orEmpty())
             is Resource.Error -> Resource.Error(response.message.orEmpty())
-            is Resource.Loading -> response
+            is Resource.Loading -> Resource.Loading()
         }
     }
 }

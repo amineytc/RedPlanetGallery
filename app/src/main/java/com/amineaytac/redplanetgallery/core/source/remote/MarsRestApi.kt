@@ -12,4 +12,10 @@ interface MarsRestApi {
     suspend fun getAllMarsPicture(
         @Query("api_key") apiKey: String = Constants.API_KEY
     ): Response<MarsResponse>
+
+    @GET("rovers/curiosity/photos?sol=1000")
+    suspend fun getSearchMarsPicture(
+        @Query("camera") camera: String,
+        @Query("api_key") apiKey: String = Constants.API_KEY
+    ): Response<MarsResponse>
 }

@@ -35,4 +35,10 @@ class MarsRepository @Inject constructor(
     fun isItemFavorited(itemId: String): LiveData<Boolean> {
         return favoriteDao.isItemFavorited(itemId)
     }
+
+    suspend fun getSearchMarsPicture(search: String) = try {
+        Resource.Success(marsRestApi.getSearchMarsPicture(search).body()?.photos)
+    } catch (e: Exception) {
+        Resource.Error(e.message.orEmpty())
+    }
 }
